@@ -32,8 +32,29 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Page, Post, Author, Tag, Global],
+    collections: [
+      {
+        name: "zazitek",
+        label: "Moje Zážitky",
+        path: "content/zazitky",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Název",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Popis",
+            isBody: true,
+          },
+        ],
+      },
+    ],
   },
-});
 
 export default config;
